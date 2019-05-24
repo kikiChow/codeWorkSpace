@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div>
+        <input type="text" id='input'>
+        <button type="button" id='btn'>提交</button>
+    </div>
+
+    <script>
+        function getValue(containerId) {
+            containerId = document.getElementById(containerId);
+            return containerId.value;
+        }
+
+        var btn = document.getElementById('btn');
+
+        btn.onclick = function () {
+            var inputValue = getValue('input');
+            // console.log(inputValue);
+            setCookie('input', inputValue);
+            var cookie = getCookie('input');
+            console.log(cookie)
+        }
+
+
+        setCookie('name', 'cc');
+        alert(getCookie('name'));
+        //cookie操作
+        //设置cookie,
+        function setCookie(name, value) {
+            document.cookie = name + '=' + escape(value);
+            console.log('set成功')
+        }
+
+        //读取cookie
+        function getCookie(name) {
+            var arr, reg = new RegExp("(^| )" + name + "=([^;]*)(;|$)"); //正则匹配
+            if (arr = document.cookie.match(reg)) {
+                return unescape(arr[2]);
+            }
+            else {
+                return null;
+            }
+        }
+
+        function delCookie(name) {
+            var exp = new Date();
+            exp.setTime(exp.getTime() - 1);
+            var cval = getCookie(name);
+            document.cookie = name + '=' + cval + ";expires=" + exp.toGMTString();
+        }
+
+    </script>
+</body>
+
+</html>

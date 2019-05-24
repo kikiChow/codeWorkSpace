@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{margin: 0 auto;}
+        @keyframes myfirst{
+            from{left: 0px;}
+            to{left: 300px;}
+        }
+        @-webkit-keyframes myfirst{
+            from{left: 0px;}
+            to{left: 300px;}
+        }
+        .box{
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            background:red;
+            animation: myfirst 5s;
+            -webkit-animation: myfirst 5s;
+        }
+        .container{
+            position: relative;
+            width: 400px;
+            height: 30px;
+            background: pink;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class='box'></div>
+    </div>
+</body>
+</html>

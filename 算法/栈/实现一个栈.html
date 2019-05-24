@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+    //js实现一个栈的数据结构
+    function Stack() {
+        var arr = [];
+        //压栈
+        this.push = function (element) {
+            arr.push(element);
+        }
+        //出战
+        this.pop = function () {
+            return arr.pop()
+        }
+        //获取长度
+        this.size = function () {
+            return arr.length;
+        }
+        //清空栈
+        this.clear = function() {
+            arr = [];
+            return true;
+        }
+        //获取栈顶元素
+        this.top = function () {
+            return arr[arr.length-1];
+        }
+        this.toString = function() {
+            return arr.toString();
+        }
+    }    
+    </script>
+</body>
+</html>

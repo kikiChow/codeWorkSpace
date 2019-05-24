@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //add相加 函数柯里化   
+        function add() {
+            //建立args,利用闭包特性，不断保存arguments
+            var args = [].slice.call(arguments);
+            //方法一，新建_add函数实现柯里化
+            var _add = function () {
+                if (arguments.length === 0) {
+                    //参数为空，对args执行加法
+                    return args.reduce(function (a, b) { return a + b });
+                } else {
+                    //否则，保存参数到args，返回一个函数
+                    [].push.apply(args, arguments);
+                    return _add;
+                }
+            }
+            //返回_add函数
+            return _add;
+        }
+        console.log(add(1, 2, 3)(1)(2)(3)(4, 5, 6)(7, 8)());//42
+
+
+        function curry(fn) {
+            // 缓存除函数fn之外的所有参数
+            let args = Array.prototype.slice.call(arguments, 1);
+            return function () {
+                // 连接已缓存的老的参数和新传入的参数(即把每次传入的参数全部先保存下来，
+                //但是并不执行)
+                let newArgs = args.concat(Array.from(arguments));
+                if (newArgs.length < fn.length) {
+                    // 递归传入fn和已累积的参数
+                    return curry.call(this, fn, ...newArgs);
+                } else {
+                    //调用
+                    return fn.apply(this, newArgs);
+                }
+            }
+        }
+        function multiFn(a,b,c) {
+            return a*b*c;
+        }
+        var multi = curry(multiFn)
+      
+    </script>
+</body>
+
+</html>

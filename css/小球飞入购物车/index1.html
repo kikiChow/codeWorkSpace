@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>JS Bin</title>
+    <style>
+        html {
+            width: 100%;
+            height: 100%;
+        }
+
+        body {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            overflow: hidden;
+        }
+
+        .icon-add {
+            position: absolute;
+            right: 20px;
+            top: 100px;
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            line-height: 50px;
+            text-align: center;
+            font-size: 30px;
+            border: 1px solid #ddd;
+            border-radius: 50%;
+        }
+
+        .icon2 {
+            top: 200px;
+        }
+
+        .point-outer.point-pre {
+            display: none;
+        }
+
+        .point-outer {
+            position: absolute;
+            z-index: 20;
+            -webkit-transition: all 0.5s cubic-bezier(0.39, -0.4, 0.83, 0.23) 0s;
+            transition: all 0.5s cubic-bezier(0.39, -0.4, 0.83, 0.23) 0s;
+        }
+
+        .point-inner {
+            width: 50px;
+            height: 50px;
+            line-height: 50px;
+            border-radius: 50%;
+            background-color: #09BE03;
+            -webkit-transition: all 0.5s linear 0s;
+            color: #ffffff;
+            text-align: center;
+            font-size: 0.7rem;
+        }
+    </style>
+</head>
+
+<body>
+    <span class="icon-add icon">+</span>
+    <span class="icon-add icon2">+</span>
+    <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+    <script>
+        $(function () {
+            //小球运动动画元素
+            var $pointDiv = $('<div id="pointDivs">').appendTo('body');
+            for (var i = 0; i < 5; i++) {
+                $('<div class="point-outer point-pre"><div class="point-inner"/></div>').appendTo($pointDiv);
+            }
+            $('.icon-add').click(function () {
+                var startOffset = $(this).offset();
+                var endTop = window.innerHeight - 30,
+                    endLeft = 20,
+                    left = startOffset.left,
+                    top = startOffset.top;
+                var outer = $('#pointDivs .point-pre').first().removeClass("point-pre").css({
+                    left: left + 'px',
+                    top: top + 'px'
+                });
+                var inner = outer.find(".point-inner");
+                setTimeout(function () {
+                    outer[0].style.webkitTransform = 'translate3d(0,' + (endTop - top) + 'px,0)';
+                    inner[0].style.webkitTransform = 'translate3d(' + (endLeft - left) + 'px,0,0)';
+                    setTimeout(function () {
+                        outer.removeAttr("style").addClass("point-pre");
+                        inner.removeAttr("style");
+                    }, 500);
+                    //这里的延迟值和小球的运动时间相关
+                }, 1);
+                //小球运动坐标
+            })
+        })
+    </script>
+</body>
+
+</html>

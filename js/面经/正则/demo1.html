@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    //敏感词过滤
+    var str = '我草你妈哈哈背景天胡景涛哪肉涯剪短发欲望';
+    var regExp = /草|肉|胡景涛|欲/g;
+    var result = str.replace(regExp,function (match) {
+        var len = match.length;
+        switch (len) {
+            case 1 :
+                str = "*";
+                break;
+            case 2: 
+                str = "**";
+                break;
+            case 3:
+                str = "***";
+                break;
+            default:
+                str = "****";
+        }
+        return str;
+    })
+    console.log(result);
+    //输入input为string  ， 敏感词名单list 为array;
+    // function filter(list,input) {
+    //     var regExp;
+    //     for(var i = 0;i<input.length;i++){
+
+    //     }
+    // }
+    </script>
+</body>
+</html>

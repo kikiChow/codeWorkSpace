@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .preview_box img {
+            width: 200px;
+        }
+    </style>
+    <script src="http://libs.baidu.com/jquery/1.9.0/jquery.js"></script>
+</head>
+
+<body>
+    <div class='container'>
+        <h3>Demo1:选取一张图片，并预览</h3>
+        <input id="img_input" type="file" accept="image/*" />
+        <label for="img_input"></label>
+        <div class="preview_box" id='preview_box'></div>
+    </div>
+    <script>
+       
+//  :选取一张图片，并预览
+  
+       document.getElementById("img_input").onchange= function (e) {
+            var file = e.target.files[0]; //获取图片资源
+            // 只选择图片文件
+            if (!file.type.match('image.*')) {
+                return false;
+            }
+            var reader = new FileReader();
+            reader.readAsDataURL(file); // 读取文件
+            // 渲染文件
+            reader.onload = function (arg) {
+            var img = '<img class="preview" src="' + arg.target.result + '" alt="preview"/>';
+               document.getElementById("preview_box").innerHTML = img;
+            }
+        };
+
+
+        var formData = new FormData();
+            formData.append('file', $('#img_input')[0].files[0]);  //添加图片信息的参数
+            formData.append('sizeid', 123);  //添加其他参数
+            $.ajax({
+                url: '/material/uploadFile',
+                type: 'POST',
+                cache: false, //上传文件不需要缓存
+                data: formData,
+                processData: false, // 告诉jQuery不要去处理发送的数据
+                contentType: false, // 告诉jQuery不要去设置Content-Type请求头
+                success: function (data) {
+                    var rs = eval("(" + data + ")");
+                    if (rs.state == 1) {
+                        tipTopShow('上传成功！');
+                    } else {
+                        tipTopShow(rs.msg);
+                    }
+                },
+                error: function (data) {
+                    tipTopShow("上传失败");
+                }
+            })
+            
+    </script>
+</body>
+
+</html>

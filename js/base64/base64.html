@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <p id='container'></p>
+    <script>
+         getBase64("https://image.baidu.com/search/detail?ct=503316480&z=0&ipn=d&word=%E7%99%BE%E5%BA%A6%E5%9B%BE%E7%89%87&hs=2&pn=0&spn=0&di=143110&pi=0&rn=1&tn=baiduimagedetail&is=0%2C0&ie=utf-8&oe=utf-8&cl=2&lm=-1&cs=2434563667%2C2979238788&os=4159446025%2C1423106004&simid=4205767217%2C676622381&adpicid=0&lpn=0&ln=30&fr=ala&fm=&sme=&cg=&bdtype=0&oriquery=%E7%99%BE%E5%BA%A6%E5%9B%BE%E7%89%87&objurl=http%3A%2F%2Fimg.mp.itc.cn%2Fupload%2F20160627%2Fe5ab985d50584887912966e12eab1170_th.jpg&fromurl=ippr_z2C%24qAzdH3FAzdH3Fooo_z%26e3Bf5i7_z%26e3Bv54AzdH3FwAzdH3Fbmca8d09_9a9blb&gsm=0&islist=&querylist=")
+        function getBase64(imgUrl) {
+            var xhr = new XMLHttpRequest();
+            xhr.open('get',imgUrl,true);
+            xhr.readyState = 'blob';
+            xhr.onload = function () {
+                if(this.status==200){
+                    var blob = this.response;
+                    console.log('blob',blob);
+                    let oFileReader = new FileReader();
+                    oFileReader.onloadend = function (e) {
+                        let base64 = e.target.result;
+                        console.log("方式一》》》》》》》》》", base64)
+                    };
+                    oFileReader.readAsDataURL(blob);
+                                        //====为了在页面显示图片，可以删除====
+                    var img = document.createElement("img");
+                    img.onload = function (e) {
+                        window.URL.revokeObjectURL(img.src); // 清除释放
+                    };
+                    let src = window.URL.createObjectURL(blob);
+
+                    img.src = src
+                    document.getElementById("container1").appendChild(img);
+                }
+            }
+            xhr.send();
+        }
+    </script>
+</body>
+</html>

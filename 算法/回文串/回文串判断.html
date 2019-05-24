@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function isPalindrome(s) {
+            var ds = s.toLowerCase();
+            var d1 = [];
+            //去除掉标点符号，空格，只保留字母和数字
+            for (var i = 0; i < ds.length; i++) {
+                if (ds.charCodeAt(i) >= 48 && ds.charCodeAt(i) <= 57 || ds.charCodeAt(i) >= 97 && ds.charCodeAt(i) <= 122) {
+                    d1.push(ds[i]);
+                }
+            }
+            //将d1深拷贝给d2
+            var d2 = d1.join('');
+            console.log(d2);
+            var d1 = d1.reverse().join('');
+            console.log(d1);
+
+            var res = d1===d2 ? true:false;
+            //比较d1和d2
+            
+            return res;
+        }
+
+        function easy(str) {
+            var temp = str;
+            str = str.split('').reverse().join();
+            return temp === str ? true: false;
+        }
+
+
+
+        console.log(isPalindrome('ada ada'));
+    </script>
+</body>
+
+</html>

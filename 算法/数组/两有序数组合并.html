@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function union(arr1,arr2) {
+            var arr3 = arr1.concat(arr2);
+            return arr3.sort(compare);
+        }
+        function compare(a,b) {
+            return a-b;
+        }
+        var a1 = [1, 4, 7, 9, 10]
+        var a2 = [2, 3, 6, 8]
+        // console.log(union(a1,a2));
+
+        function demo(arr1,arr2) {
+            var i = 0;
+            var j = 0;
+            var l1 = arr1.length;
+            var l2 = arr2.length;
+            var res = [];
+            function loop () {
+                if (arr1[i] < arr2[j]) {
+                    res.push(arr1[i]);
+                    i++;
+                    if (i<l1){
+                        loop();
+                    } else {
+                        res = res.concat(arr2.slice(j,l2));
+                    }
+                } else {
+                    res.push(arr2[j]);
+                    j++;
+                    if(j<l2){
+                        loop();
+                    } else {
+                       res =  res.concat(arr1.slice(i,l1));
+                    }
+                }
+            }
+            loop();
+            return res;
+        }
+        console.log(demo(a1,a2));
+ 
+    </script>
+</body>
+</html>

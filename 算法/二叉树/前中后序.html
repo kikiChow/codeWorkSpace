@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //前序遍历
+        var arr = [];
+        function preOrder(node) {
+            if(!(node==null)){
+                arr.push(node);
+                preOrder(node.left);
+                preOrder(node.right);
+            }
+        }
+        //中序遍历
+        function inOrder(node) {
+            if(!(node==null)){
+                inOrder(node.left);
+                arr.push(node);
+                inOrder(node.right);
+            }
+        }
+        //后序遍历
+        function postOrder(node) {
+            if (!(node == null)) {
+                postOrder(node.left);              
+                postOrder(node.right);
+                arr.push(node);
+            }
+        }
+    </script>
+</body>
+</html>

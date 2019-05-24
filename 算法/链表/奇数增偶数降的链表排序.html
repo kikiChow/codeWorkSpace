@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function split_list(head) {
+            var head1 = null;
+            var head2 = null;
+            var cur1 = null;
+            var cur2 = null;
+            var count = 1;
+            while (!head) {
+                if (count % 2 == 1) {
+                    if (cur1 != null) {
+                        cur1.next = head;
+                        cur1 = cur1.next;
+                    } else {
+                        cur1 = head;
+                        head1 = cur1;
+                    }
+                } else {
+                    if (cur2 != null) {
+                        cur2.next = head;
+                        cur2 = cur2.next;
+                    } else {
+                        cur2 = head;
+                        head2 = cur2;
+                    }
+                }
+                head = head.next;
+                count++;
+            }
+            cur1.next = null;
+            cur2.next = null;
+            return head1, head2;
+        }
+
+        function reverse_list(head) {
+            var pPre = null;
+            var pNext = null;
+            while (!head) {
+                pNext = head.next;
+                head.next = pPre;
+                pPre = head;
+                head = pNext;
+            }
+            return pPre;
+        }
+
+        //合并两个升序链表
+        function merge_List(head1, head2) {
+            var head;
+            tail = head;
+            while (head1 && head2) {
+                if (head1.val <= head2.val) {
+                    tail.next = head1;
+                    head1 = head1.next;
+                } else {
+                    tail.next = head2;
+                    head2 = head2.next;
+                }
+                tail = tail.next;
+            }
+            //合并剩余节点
+            if (head1) {
+                tail.next = head1;
+            }
+            if (head2) {
+                tail.next = head2;
+            }
+            return head.next;
+
+        }
+        head1, head2 = split_list(head) //1.按照奇偶位拆分为两个链表
+        head2 = reverse_list(head2) //2.反转偶数结点构成的链表
+        head = merge_list(head1, head2) // 3.合并两个递增链表
+    </script>
+</body>
+
+</html>

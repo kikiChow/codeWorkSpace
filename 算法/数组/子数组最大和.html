@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //一个整数数组中的元素有正有负，在该数组中找出一 个连续子数组
+        //，要求该连续子数组中各元素的和最大，这个连续子数组便被称作最大连续子数组
+       // 递推公式是DP[i] = max{ DP[i - 1] + A[i], A[i] } ；
+        function maxSonArr(arr) {
+            var maxSum = arr[0];
+            var thisSum = arr[0];
+            for(var i = 1;i<arr.length;i++){
+                thisSum = (thisSum>0)?  thisSum+ arr[i] : arr[i];
+                maxSum = (thisSum > maxSum)? thisSum :maxSum;
+            }
+            return maxSum;
+        }
+        var test = maxSonArr([1, -2, 3, 10, -4, 7, 2, -5]);
+        console.log(test);
+    </script>
+</body>
+</html>

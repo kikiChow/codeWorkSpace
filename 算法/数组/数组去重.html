@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function unique1(arr) {
+            var hash = [];
+            for(var i = 0;i <arr.length;i++){
+                if(hash.indexOf(arr[i])== -1){
+                    hash.push(arr[i]);
+                }
+            }
+            return hash;
+        }
+        function unique2(arr) {
+            arr.sort();
+            var hash = [arr[0]];
+            for(var i = 1;i<arr.length;i++){
+                if (arr[i] !=hash[hash.length - 1]) {
+                    hash.push(arr[i]);
+                }
+                return hash;
+            }        
+        }
+        // console.log(unique2([1,1,2,3]));
+
+
+
+
+        function unique3(arr) {
+            for(var i = 0; i<arr.length;i++){
+                for(var j = i+1 ;j< arr.length;j++){
+                    if(arr[i] === arr[j]){
+                        ++ i;
+                    }
+                }
+                hash.push(arr[i]);
+            }
+            return hash;
+        }
+
+        function unique4(arr) {
+            var set = new Set(arr);
+            return [...set];
+        }
+
+
+    </script>
+</body>
+</html>

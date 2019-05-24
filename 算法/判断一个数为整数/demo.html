@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function numberTest(num) {
+            return typeof (num) === 'number' && num % 1 == 0 ? true:false;   
+        }
+
+        //正则写法
+        function regNum(num) {
+             var reg = /^\d+$/;
+             return reg.test(num);
+        }
+       
+
+        var c = regNum(12.9)
+        console.log(c);
+    </script>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //节点
+        function Node(element) {
+            this.element = element;   //当前节点的元素
+            this.next = null;         //下一个节点链接
+        }
+
+        //查找某个节点
+        function find(item) {
+            var currentNode = this.head;
+            while(currentNode.element != item){
+                currentNode = currentNode.next;
+            }
+            return currentNode;
+        }
+
+        //向某元素后面插入节点
+        function insert(newElemnt,item) {
+            var newNode = new Node(newElemnt);
+            var currentNode = find(item);
+            newNode.next = currentNode.next;
+            currentNode.next = newNode;
+        }
+
+        //查找某个节点的前一个节点
+        function findPrevious(item) {
+            var currentNode = this.head;
+            while(!(currentNode.next==null)&&(currentNode.next.element !=item)){
+                currentNode = currentNode.next;
+            }
+            return currentNode;
+        }
+
+        //删除某个节点
+        function remove(item) {
+            var preNode = find(item);
+            if(!(preNode.next ==null)){
+                preNode.next = preNode.next.next;
+            }
+        }
+
+        //修改某个节点的数据
+        function edit(item,newItem) {
+            var element = find(item);
+            element.element = newItem;
+        }
+    </script>
+</body>
+
+</html>

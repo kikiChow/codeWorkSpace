@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function compare(obj1,obj2) {
+            var a1= obj1 instanceof Object;
+            var a2 = obj2 instanceof Object;
+            if(!a1 || !a2){
+                return obj1===obj2;
+            }
+
+            if(Object.keys(obj1).length !==Object.keys(obj2).length){
+                return false;
+            }
+
+            for(var key in obj1){
+                var o1 = obj1[key] instanceof Object;
+                var o2 = obj2[key] instanceof Object;
+                if(o1 &&o2){
+                    return compare(obj1[key],obj2[key])
+                }
+                if(obj1[key]!=obj2[key]){
+                    return false;
+                }
+            }
+            return true;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function bigNumberAdd(bigA,bigB) {
+            //为了防止最前一位进位 最前面加一个0
+            var a = '0' + bigA;
+            var b = '0' + bigB;
+            var arrA= a.split('');
+            var arrB= b.split('');
+            var temp ='';
+            var carry = 0;
+            var res = []
+            var distance = bigA.length-bigB.length;
+            var len = distance > 0 ? bigA.length: bigB.length;
+            if(distance > 0 ){
+                for(var i = 0;i <distance;i++){
+                    arrB.unshift('0');
+                }
+            } else {
+                for( let i = 0;i<Math.abs(distance);i++){
+                    arrA.unshift('0');
+                }
+            }
+            for( let j = len-1;j>=0;j--){
+                temp =  Number(arrA[j])+ Number(arrB[j]) + carry;
+                if(temp >=10){
+                    carry = 1;
+                    res.push(temp-10);
+                } else {
+                    carry = 0;
+                    res.push(temp)
+                }
+            }
+            res = res.reverse().join('').replace(/^0/,'');
+            console.log(res);
+
+        }
+        bigNumberAdd('30000000000000000000000000', '91111111111111111111111111')
+    </script>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .circle{
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-top: 10px;
+        }
+        .squre{
+            width:30px;
+            margin-top: 10px;
+            height: 30px;
+        }
+    </style>
+</head>
+<body>
+    <button id='btn'>出现吧皮卡丘！</button>
+    <div id='wrapper'></div>
+    <script>
+        var btn = document.getElementById('btn');
+        btn.onclick = function () {
+            var wrapper = document.getElementById('wrapper');
+            wrapper.innerHTML= '';
+            var rd = Math.random();
+            var num = 2+ Math.floor(rd * 7);
+            console.log(num)
+            var circleFlag;
+            for(var i = 0;i<num;i++){
+                var newdiv = document.createElement('div');
+                var random = Math.random();
+                var color = Math.floor(random*255);
+                circleFlag = random > 0.5 ? true : false;
+                if(circleFlag){
+                    newdiv.className = 'circle';
+                } else {
+                    newdiv.className = 'squre';
+                }
+                newdiv.style.backgroundColor = Color() ;
+                wrapper.appendChild(newdiv);
+            }
+        }
+          function Color() {
+               var r = Math.floor(Math.random() * 255);
+                var g = Math.floor(Math.random() * 255);
+                var b = Math.floor(Math.random() * 255);
+                var color = 'rgba(' + r + ',' + g + ',' + b + ',0.8)';
+                return  color;
+        }
+    </script>
+</body>
+</html>

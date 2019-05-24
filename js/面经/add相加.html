@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //实现一个累加函数的功能比如sum(1,2,3)(2).valueOf()//8，
+        function sum(...args) {
+            var args = [...args];
+            var cache = 0;
+            if (args.length == 0) {
+                throw new Error('参数不能为空');
+            } else if (args.length == 1) {
+                cache += ars[0];
+            } else {
+                for (var i = 0; i < ars.length; i++) {
+                    cache += args[i];
+                }
+            }
+            var add = function (...args1) {
+                var args1 = [...args1];
+                if (args1.length === 0) {
+                    throw new Error('参数不能为空');
+                }
+                for (let i = 0; i < args1.length; i++) {
+                    cache += args1[i];
+                }
+                return add;
+            }
+            add.valueOf = function () {
+                console.log(cache);
+            }
+            return add;
+        }
+
+        var test = sum(2)(3);
+        console.log(test);
+
+    </script>
+</body>
+
+</html>

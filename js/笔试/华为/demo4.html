@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function moveElement(arr, n) {
+            if (Math.abs(n) > arr.length) n = n % arr.length
+            return arr.slice(-n).concat(arr.slice(0, -n))
+        }
+
+        function filter(str) {
+            var strArr = str.split(' ');
+            var newSet = new Set(strArr);
+            return [...newSet];
+        }
+
+        // function str(params) {
+            
+        // }
+
+        // var arr1= [1,2,3,4];
+        // var n1 = 2;
+        var test = filter('sdfgddd');
+        console.log(test);
+        // console.log(moveElement(arr1, n1))
+    </script>
+</body>
+
+</html>

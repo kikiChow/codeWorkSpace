@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // //默认绑定
+        // function foo() {
+        //     console.log(this.a);
+        // }
+        // var a = 2;
+        // foo();  //2 
+
+
+        // //隐式丢失
+        // function foo() {
+        //     console.log(this.a);
+        // }
+        // var obj = {
+        //     a: 2,
+        //     foo: foo
+        // }
+        // var bar = obj.foo;
+        // var a = 'oops, global';
+        // bar()   //'oops, global';
+
+
+        // window.val = 1;
+        // var obj = {
+        //     val: 2,
+        //     dbl: function () {
+        //         this.val *= 2;
+        //         val *= 2;
+        //         console.log(val);
+        //         console.log(this.val);
+        //     }
+        // };
+        // // 说出下面的输出结果
+        // obj.dbl();  //2 4
+        // var func = obj.dbl; 
+        // func();   // 8 8
+        for (var i = 0; i < 5; i++) {
+
+                setTimeout(function () {
+
+                    console.log(i);
+
+                }, 1000);
+
+            }
+    </script>
+</body>
+
+</html>

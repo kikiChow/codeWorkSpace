@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        //@param fatherStr主串
+        //@param sonStr子串
+        function findIndex(fatherStr,sonStr){
+            var fatherLen = fatherStr.length;
+            var sonLen = sonStr.length;
+            if(sonLen<fatherLen){
+                return -1;
+            }
+            for(var i = 0;i <(fatherLen-sonLen+1);i++){
+                for(var j = 0;j <sonLen;j++){
+                    if(fatherStr[i+j]!==sonStr[j]){
+                        break;
+                    }
+                    if(j == sonLen-1){
+                        return i;
+                    }
+                }
+            }
+            return -1;
+        }
+    </script>
+</body>
+</html>

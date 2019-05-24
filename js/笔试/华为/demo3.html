@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function demo1(N, arr) {
+                var str = '';
+                for (var i = 0; i < arr.length; i++) {
+                    var n = arr[i].length;
+
+                    arr[i] = n > N ? arr[i].slice(N) : arr[i];
+                    str += n > N ? arr[i].slice(0, n + 1) : '';
+                }
+                return str;
+            }
+            var test = demo1(3, ['2567957', '17434']);
+            console.log(test);
+    </script>
+</body>
+</html>

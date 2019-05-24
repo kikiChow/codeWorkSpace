@@ -1,0 +1,47 @@
+package algorithm;
+
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int w = sc.nextInt();
+
+        int[] a = new int[2 * n];
+        for (int i = 0; i < 2 * n; i++)
+            a[i] = sc.nextInt();
+
+        if (w <= 0) {
+            System.out.println(0);
+            return;
+        }
+
+        int boyMin = a[0];
+        int girlMin = a[n];
+
+
+
+
+        for (int i = 0; i < n; i++)
+            boyMin = boyMin <= a[i] ? boyMin : a[i];
+
+        for (int i = 0; i < n; i++)
+            girlMin = girlMin <= a[i + n] ? girlMin : a[i + n];
+
+        if (2 * girlMin <= boyMin) {
+            if (girlMin * 3 * n <= w) {
+                System.out.println( String .format("%.6f",(double)girlMin * 3 * n));
+            } else {
+                System.out.println(String .format("%.6f",(double)w));
+            }
+        } else {
+            if (boyMin * 1.5 <= w) {
+                System.out.println(String .format("%.6f",(double)boyMin * 1.5 * n));
+            } else {
+                System.out.println(String .format("%.6f",(double)w));
+            }
+        }
+    }
+}

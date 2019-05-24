@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //两个很大的数相乘
+        function bigNumMul(bigA,bigB) {
+            if(isNaN(bigA)||isNaN(bigB)) return '';
+            bigA = bigA.toString().split('');
+            bigB = bigB.toString().split('');
+            var lenA = bigA.length;
+            var lenB= bigB.length;
+            var res = [];
+            for(let i= lenA-1;i>=0;i--){
+                for(let j = lenB-1;j>=0;j--){
+                    var index1 = i+j;
+                    var index2 = i+j+1;
+                    var mul = bigA[i]*bigB[j]+(res[index2]||0)
+                    res[index1] = Math.floor(mul/10)+(res[index1]||0);
+                    res[index2] = mul % 10 ;
+                }
+            }
+            var result = res.join('');
+            return +result===0? '0': result.replace(/^0/,'');
+        }
+        var test = bigNumMul(5678,1234);
+        console.log(test)
+    </script>
+</body>
+</html>

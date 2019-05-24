@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function Node(element) {
+            this.element = element;
+            this.next = null;
+        }
+
+        function LList() {
+            this.head  = new Node('head');//头节点
+        }
+        LList.prototype = {
+            //查找某个节点
+            find: function (item) {
+                var currNode = this.head;
+                while(currNode.element != item){
+                    currNode = currNode.next;
+                }
+                return currNode;
+            },
+            //向某个元素后面插入新的节点
+            insert: function (newElement, item){
+                var newNode = new Node(newElement);
+                var current = this.find(item);
+                newNode.next = current.next;
+                current.next = newNode;
+            },
+            //查找某一个节点的前一个节点（前驱）
+            findPrevius: function (item) {
+                var currNode = this.head;
+                while(currNode.next.element != item && !(currNode.next==null)){
+                    currNode = currNode.next;
+                } 
+                return currNode;
+            },
+            //删除某个节点
+            remove: function (item) {
+                var prevNode = this.findPrevius(item)
+                if(prevNode.next !=null){
+                     prevNode.next = prevNode.next.next;
+                }         
+            },
+            //修改某一节点的数据
+            edit: function (item,newItem) {
+                var node = this.find(item);
+                node.element = newItem;
+            },
+            //在控制台打印所有的节点（方便预览）
+            display: function () {
+                var currNode = this.head;
+                while (!(currNode.next==null)){
+                    console.log(currNode.next.element);
+                    currNode = currNode.next;
+                }
+            }
+        }
+    </script>
+</body>
+</html>

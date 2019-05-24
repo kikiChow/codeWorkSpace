@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function same(arr1,arr2) {
+            //临时数组存放
+            var temp = [];
+            var res = [];
+            for(var i = 0;i<arr2.length;i++){
+                temp[arr2[i]] = true;
+            }
+
+            for(var j = 0;j<arr1.length;j++){
+                if(temp[arr1[j]]){
+                    res.push(arr1[j]);
+                }
+            }
+            return res;
+        }
+        //做比较的两个数组
+            var array1 = ['a', 'b', 'c', 'd', 'e'];//数组1
+            var array2 = ['d', 'f', 'e', 'a', 'p'];//数组2
+        console.log(same(array1,array2));
+    </script>
+</body>
+</html>

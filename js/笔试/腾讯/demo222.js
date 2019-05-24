@@ -1,0 +1,55 @@
+//针对多行输入的情况
+var readline = require('readline');
+const control = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout
+});
+control.question('', callBack);
+control.on('close', function (close) {
+    process.exit();
+});
+
+var arr = [];
+var num = 0;//一共有多少行数据输入
+function callBack(str) {
+    arr.push(str);
+    //假设第一行的第二个数字代表数据的行数
+    if (arr.length == 1) {
+        num = Number(str, 10);
+    }
+    //输入完毕，开始处理
+    if (arr.length > num) {
+        processing(arr);//在这个函数里写逻辑
+        control.close();
+    } else {
+        control.question('', callBack);
+    }
+}
+
+function processing(arr) {
+    var yes = 'Yes,you can win!', no = 'Oh,no.';
+    var count = 0;
+    var run = function (m) {
+        for (var i = 0; i < m.length - 1; i++) {
+            if (m[i] === m[i + 1]) {
+                count++;
+                //console.log(m, i);
+                m.splice(i, 2);
+                //console.log(m);
+                i -= 2;
+                //run(m.splice(i, 2));
+            }
+        }
+    }
+    for (var i = 1; i < arr.length; i++) {
+        let numbers = arr[i].split('').map(s => parseInt(s));
+        //console.log(numbers);
+        run(numbers);
+        if (count % 2 == 0) {
+            console.log('Oh,no.');
+        } else {
+            console.log('Yes,you can win!');
+        }
+        count = 0;
+    }
+}

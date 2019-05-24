@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //kmp算法
+
+        //部分匹配表
+        function kmpGetStrPartMatchValue(str) {
+            var prefix = [];
+            var suffix = [];
+            var partMatch = [];
+            for (var i = 0, j = str.length; i < j; i++) {
+                var newStr = str.substring(0, i + 1);
+                if (newStr.length == 1) {
+                    partMatch[i] = 0;
+                } else {
+                    for (var k = 0; k < i; k++) {
+                        prefix[k] = newStr.slice(0, k + 1); //前缀
+                        suffix[k] = newStr.slice(-k - 1); //后缀
+                        if (prefix[k] == suffix[k]) { //前缀等于后缀时
+                            partMatch[i] = prefix[k].length;
+                        }
+                    }
+                    if (!partMatch[i]) {
+                        partMatch[i] = 0;
+                    }
+                }
+            }
+            prefix.length = 0;
+            suffix.length = 0;
+            return partMatch;
+        }
+
+        //kmp算法 查找字符串
+        function KMP(sourceStr, targetStr) {
+            var partMatchValue = kmpGetStrPartMatchValue(targetStr);
+            var result = false;
+            for (var i = 0, j = sourceStr.length; i < j; i++) {
+                for (var m = 0, n = targetStr.length; m < n; m++) {
+                    if (targetStr.charAt(m) == sourceStr.charAt(i)) {
+                        if (m == targetStr.length - 1) {
+                            result = true;
+                            break;
+                        } else {
+                            i++;
+                        }
+                    } else {
+                        if (m > 0 && partMatchValue[m - 1] > 0) {
+                            m = partMatchValue[m - 1] - 1;
+                        } else {
+                            break;
+                        }
+                    }
+                }
+                if (result) {
+                    break;
+                }
+            }
+            return result;
+        }
+
+        var s = "BBCABCDABABCDABCDABDE";
+        var t = "ABDABD";
+        console.log(KMP(s, t));
+    </script>
+</body>
+
+</html>

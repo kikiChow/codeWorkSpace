@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>0.5px细线</title>
+    <style>
+        .line1{position: relative;}
+        .line1:after{
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 1px;
+            background-color: black;
+            width: 100%;
+            content: ' ';
+             -webkit-transform: scaleY(0.5);
+        }
+        /* @media(-webkit-min-device-pixel-radio: 1.5),(min-device-pixel-radio: 1.5){
+            .line1：after{
+                 -webkit-transform: scaleY(0.667);
+            }
+        }
+           @media(-webkit-min-device-pixel-radio: 2),(min-device-pixel-radio: 2){
+            .line1：after{
+                 -webkit-transform: scaleY(0.5);
+            }
+        } */
+
+        .line2{
+            position: relative;
+        }
+        .line2::after{
+            position: absolute;
+            left: 0;
+            top: 0;
+            width:100%;
+            height: 1px;
+            content: ' ';
+            background-image: linear-gradient(0deg, transparent 50%, #e0e0e0 50%);
+        }
+            
+    </style>
+</head>
+<body>
+    <div class = 'line1'></div>
+    <!-- <div class='line2'></div> -->
+</body>
+</html>

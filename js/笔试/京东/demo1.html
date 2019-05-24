@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function oneCount(arr) {
+            var result;
+            if (arr[0]===1 &&arr[arr.length-1]==1){
+                if(arr.indexOf(0)){
+                    var zeroIndex = arr.indexOf(0);
+                    var firstCount = zeroIndex+1;
+                } 
+                 if (arr.lastIndexOf(0)) {
+                    var zeroIndex = arr.indexOf(0);
+                    var lastCount = zeroIndex + 1;
+                } else{
+                    result = arr.length;
+                }
+
+                result = firstCount+ lastCount;
+                return result;
+               
+            }
+        }
+        console.log(oneCount[1,1,0,1,1])
+        function demo(arr) {
+            var temp = 0;
+            var sum = 0;
+            for (var i = 0; i < arr.length; i++) {
+                if (arr[i] === 1) {
+                    sum += 1;
+                } else {
+                    sum = 0;
+                }
+                if (temp < sum) {
+                    temp = sum;
+                }
+                return temp;
+            }
+        }
+        
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function ReverseList(pHead) {
+            //// 链表为空或只有一个节点时，不用反转
+            var pPre = null;
+            var pNext = null
+            while( pHead!==null){
+                pNext = pHead.next;
+                pHead.next = pPre;
+                pPre = pHead;
+                pHead = pNext;
+            }
+            
+            return pPre;           
+        }
+
+        function FindKthToTail(head, k) {
+            var move = head;
+            while( k-- !=0){
+                if(move ==null){
+                    return null;
+                }
+                move = move.next;
+            }
+            while(move!=null){
+                move = move.next;
+                head = head.next;
+            }
+            return head;
+        }
+    </script>
+</body>
+</html>

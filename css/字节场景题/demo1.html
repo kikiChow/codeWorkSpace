@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .container {
+            display: flex;
+        }
+
+        .text {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            flex: 1;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 一个单行容器内：左边一行文字，右边一个btn，
+    文字边长过程中，不会把btn挤下去，而是文字超出省略 -->
+    <div class='container'>
+        <div class='text'>
+            实现一个单行容器内：左边一行文字，右边一个btn，文字边长过程中实现一个单行容器内：左边一行文字，右边一个btn，文字边长过程中，不会把btn挤下去，而是文字超出省略实现一个单行容器内：左边一行文字，右边一个btn，文字边长过程中，不会把btn挤下去，而是文字超出省略实现一个单行容器内：左边一行文字，右边一个btn，文字边长过程中，不会把btn挤下去，而是文字超出省略实现一个单行容器内：左边一行文字，
+            右边一个btn，文字边长过程中，不会把btn挤下去，
+            而是文字超出省略，不会把btn挤下去，而是文字超出省略</div>
+        <button>btn</button>
+    </div>
+</body>
+
+</html>

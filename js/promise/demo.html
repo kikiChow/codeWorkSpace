@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var run = function () {
+            var _promise = new Promise(function (resolve,reject) {
+                setTimeout(() => {
+                    var rand = Math.random();
+                    if(rand < 0.5){
+                        resolve('resolve'+rand);
+                    } else {
+                        reject('reject'+rand);
+                    }
+                }, 1000);
+            })
+            return _promise;
+        }
+        run().then(function (data) {
+            console.log('第一次',data);
+            return data;
+        }).then(function (data) {
+            console.log('第二次',data);
+            return data;
+        }).then(function (data) {
+            console.log('第三次', data);
+            return data;
+        }).catch(function (e) {
+            console.log(e);
+        })
+    </script>
+</body>
+</html>

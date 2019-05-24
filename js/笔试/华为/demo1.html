@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function demo1(arr) {
+            var res = []
+            var max = 0;
+            for (var i = 0; i < arr.length; i++) {
+                max = max > arr[i].length ? max : arr[i].length
+            }
+            max = Math.ceil(max / 3);
+            console.log(max);
+            var count = 0
+            while (count < max) {
+                for (var i = 0; i < arr.length; i++) {
+                    if (arr[i].length != 0) {
+                        var temp = arr[i].length > 3 ? arr[i].slice(0, 3) : arr[i];
+                        // arr[i].length > 3 ? arr[i].splice(0,3): [];
+                        //console.log(arr);
+                        res.push(temp)
+                    }
+                    if (arr[i].length > 3) {
+                        arr[i].splice(0, 3);
+                    } else {
+                        arr[i] = [];
+                    }
+                }
+                count++;
+            }
+            res = flatten(res);
+            res = res.join(',');
+            return res;
+        }
+        function flatten(arr) {
+            var result = [];
+            for (var i = 0; i < arr.length; i++) {
+                if (Array.isArray(arr[i])) {
+                    result = result.concat(flatten(arr[i]));
+                } else {
+                    result.push(arr[i]);
+                }
+            }
+            return result;
+        }
+        var test = demo1([[2, 5, 6, 7, 9, 5, 7], [1, 7, 4, 3, 4]]);
+        console.log(test);
+
+        // var arr = [2, 5, 6, 7, 9, 5, 7];
+        // arr.splice(0,3);
+        // console.log(arr);
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .wrapper {
+            min-height: 100%;
+        }
+
+        .wrapper .content {
+            padding-bottom: 50px;
+            /* footer区块的高度 */
+        }
+
+        .footer {
+            position: relative;
+            margin-top: -50px;
+            /* 使footer区块正好处于content的padding-bottom位置 */
+            height: 50px;
+            clear: both;
+        }
+
+        .clearfix::after {
+            display: block;
+            content: ".";
+            height: 0;
+            clear: both;
+            visibility: hidden;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper clearfix">
+        <div class="content">
+            这里是页面内容
+        </div>
+    </div>
+    <div class="footer">
+        这里是footer的内容
+    </div>
+
+
+</body>
+
+</html>

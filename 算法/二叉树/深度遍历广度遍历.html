@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        //深度优先遍历 递归
+        function deepTraversal(node) {
+            var nodes = [];
+            if(node !=null){
+                nodes.push(node);
+                var children = node.children;
+                for(var i = 0;i< children.length;i++){
+                    deepTraversal(children[i]);
+                }
+            }
+            return nodes;
+        }
+
+        //广度优先遍历
+        function wideTraversal(node) {
+            var nodes = [];
+            var i = 0;
+            if(node !=null){
+                nodes.push(node);
+                wideTraversal(node.nextElementSibling);  //兄弟节点
+                node = nodes[i++];
+                wideTraversal(node.firstElementChild);
+            }
+            return nodes;
+        }
+    </script>
+</body>
+</html>

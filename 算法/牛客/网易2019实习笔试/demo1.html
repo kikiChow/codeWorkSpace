@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function getPay(personNum, workNum, person, task) {
+            var temp = []
+            var result;
+            for (var i = 0; i < personNum; i++) {
+                for (var j = 0; j < workNum; j++) {
+                    if (person[i] >= task[j][0]) {
+                        temp.push(task[j][1]);
+                       
+                    }
+                    
+                }
+                temp.sort();
+                result = temp[temp.length - 1];
+                console.log(result);
+            }
+        }
+        var personNum = 3;
+        var workNum = 3;
+        var person = [9, 10, 100000];
+        var task = [[1,100],[10,1000],[100000,1001]];
+        getPay(personNum, workNum, person, task)
+    </script>
+</body>
+
+</html>

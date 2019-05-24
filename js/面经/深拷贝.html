@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    //对象的深拷贝
+    function deepCopy(obj1,obj2) {
+        var obj1 = obj ||{};
+        for(var k in obj2){
+            if(obj2.hasOwnProperty(k)){//只拷贝实例属性，不进行原型的拷贝
+                if(typeof(obj2[k]) =='object'){ ///引用类型的数据单独处理
+                    obj1[k] = Array.isArray(obj2[k])? []: {};
+                    deepCopy(obj1[k],obj2[k]); //递归处理引用类型数据
+                } else {
+                    obj1[k] = obj2[k]; //值类型的数据直接进行拷贝
+                }
+            }
+        }
+    }
+    </script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <button id='btn'>通过JSONP跨域</button>
+    <p>hello world </p>
+    <script>
+        function handleResponse(res) {
+            console.log(res);
+            console.log(typeof(res))
+        }
+          function handleResponse2(res) {
+                console.log(res);
+                console.log(typeof (res));
+                console.log("2");
+            }
+        var btn = document.getElementById('btn');
+        btn.onclick= function () {
+            var script = document.createElement('script');
+            // script.src = 'http://api.douban.com/v2/movie/top250?callback=handleResponse';
+            script.src = 'https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?wd=?callback=handleResponse';
+            document.body.appendChild(script);
+            var script2 = document.createElement('script');
+            script2.src = 'http://localhost:3001/?callback=handleResponse2';
+            document.body.appendChild(script);
+        }
+    </script>
+</body>
+
+</html>
